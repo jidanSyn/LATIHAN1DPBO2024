@@ -17,6 +17,7 @@ class AnggotaDPR
     
     public:
 
+        // 'empty/default' constructor
         AnggotaDPR()
         {
             this->id = "";
@@ -27,6 +28,7 @@ class AnggotaDPR
             this->party = "";
         }
 
+        // constructor with given values for attributes
         AnggotaDPR(string id, string name, string field, string electoral_district, string position, string party)
         {
             this->id = id;
@@ -36,6 +38,8 @@ class AnggotaDPR
             this->position = position;
             this->party = party;
         }
+
+        // getters and setters for each attribute
 
         string getId()
         {
@@ -106,6 +110,7 @@ class AnggotaDPR
             this->party = party;
         }
 
+        // destructor
         ~AnggotaDPR(){
 
         }
