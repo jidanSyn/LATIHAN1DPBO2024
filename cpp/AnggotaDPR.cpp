@@ -10,10 +10,33 @@ class AnggotaDPR
         string id;
         string name;
         string field;
+        string electoral_district; // dapil
+        string position; // jabatan
         string party;
 
     
     public:
+
+        AnggotaDPR()
+        {
+            this->id = "";
+            this->name = "";
+            this->field = "";
+            this->electoral_district = "";
+            this->position = "";
+            this->party = "";
+        }
+
+        AnggotaDPR(string id, string name, string field, string electoral_district, string position, string party)
+        {
+            this->id = id;
+            this->name = name;
+            this->field = field;
+            this->electoral_district = electoral_district;
+            this->position = position;
+            this->party = party;
+        }
+
         string getId()
         {
             return this->id;
@@ -49,6 +72,28 @@ class AnggotaDPR
             this->field = field;
         }
 
+        string getElectoralDistrict()
+        {
+            return this->electoral_district;
+        }
+
+    
+        void setElectoralDistrict(string electoral_district)
+        {
+            this->electoral_district = electoral_district;
+        }
+
+        string getPosition()
+        {
+            return this->position;
+        }
+        
+
+        void setPosition(string position)
+        {
+            this->position = position;
+        }
+
     
         string getParty()
         {
@@ -61,4 +106,8 @@ class AnggotaDPR
             this->party = party;
         }
 
-\};
+        ~AnggotaDPR(){
+
+        }
+
+};
