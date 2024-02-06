@@ -28,7 +28,7 @@ void show_all(list<AnggotaDPR> llist) {
     cout << "\nList of all stored data:\n";
     int i = 1;
     for(auto it = llist.begin(); it != llist.end(); it++, i++) {
-        printf("%d. %-10s | %-10s | %-10s | %-10s | %-10s |", i, (it->getName()).c_str(), (it->getField()).c_str(), (it->getElectoralDistrict()).c_str(), (it->getPosition()).c_str(), (it->getParty()).c_str());
+        printf("%d. %-25s | %-15s | %-15s | %-15s | %-15s |\n", i, (it->getName()).c_str(), (it->getField()).c_str(), (it->getElectoralDistrict()).c_str(), (it->getPosition()).c_str(), (it->getParty()).c_str());
     }
 
     cout << "\n";
