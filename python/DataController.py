@@ -36,7 +36,7 @@ class DataController:
         position = ""
         party = ""
 
-        print("Please give attrubutes for new data:")
+        print("Please give attributes for new data:")
         print("ID                 : ", end='')
         id = input()
         print("Name               : ", end='')

@@ -7,13 +7,20 @@ class Table:
         self.__cols = cols
 
     def printRowSeparator(self, separator_length):
-        for i in range(separator_length):
-            print('-', end='')
-        print()
+
+        # manual way  
+        # for i in range(separator_length):
+        #     print('-', end='')
+        # print()
+
+        # cleaner way? using fstrings
+        print(f"{'':->{separator_length}}")
     
-    def printColPadding(self, padding_length):
-        for i in range(padding_length):
-            print(' ', end='')
+    # def printColPadding(self, padding_length):
+    #     # manual
+    #     # for i in range(padding_length):
+    #     #     print(' ', end='')
+    #     print(f"{'': >{padding_length}}", end='')
 
 
     def createRows(self, rows, cols, data):
@@ -29,12 +36,15 @@ class Table:
 
         for i in range(rows):
             self.printRowSeparator(separator_length)
+            
             for j in range(cols):
-                print("| {} ".format(data[i][j]), end='')
-                self.printColPadding(max_len[j] - len(data[i][j]))
+                print(f"| {data[i][j]: <{max_len[j]}} ", end='')
+                # self.printColPadding(max_len[j] - len(data[i][j]))
+         
             print("|")
 
         self.printRowSeparator(separator_length)
+        
 
 
 
