@@ -1,7 +1,7 @@
 <?php
 // Include necessary files
-include("DataController.php");
-include("AnggotaDPR.php");
+include_once("DataController.php");
+include_once("AnggotaDPR.php");
 
 // Initialize variables
 $id = null;
@@ -12,36 +12,29 @@ $position = "";
 $party = "";
 
 // Check if ID is provided in the URL
-if (isset($_GET['id'])) {
+if (isset($_POST["id"])) {
     // Retrieve the ID from the URL
-    $id = $_GET['id'];
-
+    $id = $_POST["id"];
     // Retrieve data for the specified ID
     $data_controller = new DataController();
     $data = $data_controller->getDataById($id); // Implement this method in your DataController class
 
+    $_SESSION['currentUpdating'] = $data;
+    
+
     // Check if data exists for the given ID
     if ($data) {
         // Populate variables with data values
-        $name = $data->getName();
-        $field = $data->getField();
-        $electoral_district = $data->getElectoralDistrict();
-        $position = $data->getPosition();
-        $party = $data->getParty();
+        $name = $data->get_name();
+        $field = $data->get_field();
+        $electoral_district = $data->get_electoral_district();
+        $position = $data->get_position();
+        $party = $data->get_party();
     } else {
         // Data not found for the given ID, handle accordingly (e.g., display error message)
     }
 }
 
-// Check if form is submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Validate and process form data
-    // For simplicity, assuming you have validation and processing logic here
-
-    // Assuming you have updated data here, you can redirect the user back to the index page
-    header('Location: index.php');
-    exit;
-}
 ?>
 
 <!DOCTYPE html>
@@ -52,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <h2>Update Data</h2>
     <form action="process.php" method="post">
-        <input type="hidden" name="action" value="edit">
+        <input type="hidden" name="action" value="update">
         <input type="hidden" name="id" value="<?php echo $id; ?>">
         <label>Name:</label><br>
         <input type="text" name="name" value="<?php echo $name; ?>"><br>

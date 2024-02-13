@@ -1,6 +1,6 @@
 <?php
 
-include("DataController.php");
+include_once("DataController.php");
 include_once("AnggotaDPR.php");
 
 
@@ -18,8 +18,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo "<script>alert('Data successfully created');</script>";
             $type = 1;
             break;
-        case 'edit':
-            
+        case 'update':
+            $data_controller->update($_SESSION['currentUpdating'], $_POST['name'], $_POST['field'], $_POST['electoral_district'], $_POST['position'], $_POST['party']);
+            $_SESSION['currentUpdating'] = null;
+            $type = 2;
             break;
         case 'delete':
             $data_controller->destroy($_POST['id']);
@@ -29,7 +31,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             break;
     }
 
-    header('Location: index.php?success='.(string)$type);
+    header('Location: index.php?status='.(string)$type);
+    exit;
 }
 
 ?>

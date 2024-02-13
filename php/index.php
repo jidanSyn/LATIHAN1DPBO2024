@@ -1,11 +1,19 @@
 <?php
-include ("AnggotaDPR.php");
+include_once ("AnggotaDPR.php");
 
 session_start();
 
-if (isset($_GET['success']) && $_GET['success'] == 1) {
-    // Display JavaScript alert message
-    echo "<script>alert('Data successfully created');</script>";
+$_SESSION['currentUpdating'] = null;
+
+if (isset($_GET['status'])  ) {
+
+    if($_GET['status'] == 1) {
+        
+        // Display JavaScript alert message
+        echo "<script>alert('Data successfully created');</script>";
+    } else if($_GET["status"] == 2) {
+        echo "<script>alert('Data successfully updated');</script>";
+    }
 }
 
 
@@ -105,7 +113,7 @@ if (!isset($_SESSION['listDPR'])) {
             <td>
                 <!-- <button>Edit</button><button>Delete</button> -->
                  <!-- Edit button -->
-                 <form action="update.php?id=<?=$row->get_id()?>" method="post" style="display: inline;">
+                 <form action="update.php" method="post" style="display: inline;">
                     <input type="hidden" name="id" value="<?=$row->get_id(); ?>">
                     <button type="submit">Edit</button>
                 </form>

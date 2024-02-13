@@ -22,8 +22,27 @@ class DataController {
         }
         return null;
     }
+    public function getDataById($id) {
+
+        $listDPR = $_SESSION['listDPR'];
+        foreach($listDPR as $dpr) {
+            if($dpr->get_id() == $id) {
+                return $dpr;
+            }
+            
+        }
+        return null;
+    }
     public function show($id) {}
-    public function update($id) {}
+    public function update($data, $name, $field, $electoral_district, $position, $party) {
+
+        $data->set_name($name);
+        $data->set_field($field);
+        $data->set_electoral_district($electoral_district);
+        $data->set_position($position);
+        $data->set_party($party);
+
+    }
     public function destroy($id) {
         $index = $this->getIndexById($id);
         echo "<script>console.log('$index');</script>";
